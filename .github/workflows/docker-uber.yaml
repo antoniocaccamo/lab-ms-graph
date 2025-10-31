@@ -56,8 +56,8 @@ jobs:
           file: ./src/main/docker/Dockerfile.uber-jar
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:${{ env.VERSION }}
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/labs/${{ github.repository }}:${{ env.VERSION }}
+            ghcr.io/labs/${{ github.repository }}:${{ github.sha }}
           # optionally enable build cache
           cache-from: type=gha
           cache-to: type=gha,mode=max
