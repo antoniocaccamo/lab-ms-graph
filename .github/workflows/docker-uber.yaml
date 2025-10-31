@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-
       VERSION: v1.0.0-uber-jar
 
     steps:
@@ -57,7 +56,7 @@ jobs:
           file: ./src/main/docker/Dockerfile.uber-jar
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:${VERSION}
+            ghcr.io/${{ github.repository }}:${{ env.VERSION }}
             ghcr.io/${{ github.repository }}:${{ github.sha }}
           # optionally enable build cache
           cache-from: type=gha
