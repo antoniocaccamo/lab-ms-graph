@@ -1,0 +1,9 @@
+services:
+
+  lab-ms-graph:
+    image: registry.private.antoniocaccamo.work/labs/lab-ms-graph:1.0.0
+    container_name: lab-ms-graph
+    ports:
+      - "8080:8080"
+    env_file:
+      - "${PWD}/vars.env"

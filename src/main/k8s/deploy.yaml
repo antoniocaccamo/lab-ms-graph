@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-ms-graph
+  namespace: labs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: labs
+      component: lab-ms-graph
+  template:
+    metadata:
+      labels:
+        app: labs
+        component: lab-ms-graph
+    spec:
+      imagePullSecrets:
+        - name: pcr-secret
+      containers:
+        - name: lab-ms-graph
+          image: registry.private.antoniocaccamo.work/labs/lab-ms-graph:1.0.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "250m"
+              memory: "128Mi"
+          env:
+            - name: TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: lab-ms-graph
+                  key: TENANT_ID
+            - name: WEBAPP_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: lab-ms-graph
+                  key: WEBAPP_CLIENT_ID
+            - name: WEBAPP_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: lab-ms-graph
+                  key: WEBAPP_CLIENT_SECRET
+            - name: MS_GRAPH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: lab-ms-graph
+                  key: MS_GRAPH_CLIENT_ID
+            - name: MS_GRAPH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: lab-ms-graph
+                  key: MS_GRAPH_CLIENT_SECRET

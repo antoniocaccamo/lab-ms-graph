@@ -1,0 +1,8 @@
+.vscode/
+target/
+*.iml
+*.log
+!target/*-runner
+!target/*-runner.jar
+!target/lib/*
+!target/quarkus-app/*
