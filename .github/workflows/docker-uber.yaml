@@ -14,6 +14,10 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    env:
+
+      VERSION: v1.0.0-uber-jar
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,10 +54,10 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./src/main/docker/Dockerfile.multi-stage
+          file: ./src/main/docker/Dockerfile.uber-jar
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${VERSION}
             ghcr.io/${{ github.repository }}:${{ github.sha }}
           # optionally enable build cache
           cache-from: type=gha
