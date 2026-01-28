@@ -30,7 +30,7 @@ public class BooksResource {
   @Inject JsonWebToken accessToken;
   @Inject SecurityIdentity securityIdentity;
 
-  private final List books =
+  private final List<BookRecord> books =
       Arrays.asList(
           new BookRecord("io", "alla grande", 1979), new BookRecord("anna", "con me", 1980));
 

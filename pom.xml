@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>labs</groupId>
     <artifactId>lab-ms-graph</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.0</version>
 
     <properties>
         <compiler-plugin.version>3.14.0</compiler-plugin.version>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>com.azure</groupId>
             <artifactId>azure-identity</artifactId>
-            <version>[1.11,)</version>
+            <version>1.11.4</version>
         </dependency>
 
 

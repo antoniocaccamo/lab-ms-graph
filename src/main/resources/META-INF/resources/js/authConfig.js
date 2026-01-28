@@ -2,11 +2,11 @@
 const msalConfig = {
     auth: {
         clientId: "1c2110d7-3081-4451-a3cc-f5dc14c9d74d",
-        authority: "https://login.microsoftonline.com/common", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
+        authority: "https://login.microsoftonline.com/53695c6a-e1de-42b9-be99-97f60ccfd8b0", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored
-        storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+         storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     },
     system: {
         loggerOptions: {
