@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VERSION: v1.0.0-uber-jar
+      VERSION: v1.1.0
 
     steps:
       - name: Checkout
@@ -53,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./src/main/docker/Dockerfile.uber-jar
+          file: ./Dockerfile.uber-jar
           push: true
           tags: |
             ghcr.io/labs/${{ github.repository }}:${{ env.VERSION }}

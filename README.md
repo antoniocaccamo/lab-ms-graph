@@ -1,5 +1,12 @@
 # lab-ms-graph
 
+## image
+
+```sh
+podman build -f src/main/docker/Dockerfile.uber-jar \                                                                                                        
+  -t ghcr.io/antoniocaccamo/labs/lab-ms-graph:${version} .
+```
+
 
 ## k8s
 

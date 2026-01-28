@@ -1,0 +1,30 @@
+## Stage 1 : build with maven builder image with native capabilities
+FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-21 AS build
+COPY --chown=quarkus:quarkus --chmod=0755 mvnw /code/mvnw
+COPY --chown=quarkus:quarkus .mvn /code/.mvn
+COPY --chown=quarkus:quarkus pom.xml /code/
+USER quarkus
+WORKDIR /code
+#RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.8.1:go-offline
+COPY LICENSE-HEADER /code/LICENSE-HEADER
+COPY src /code/src
+RUN ./mvnw -DskipTests package -Dquarkus.package.jar.type=uber-jar
+
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /work/
+RUN addgroup --system javauser && adduser -S -s /usr/sbin/nologin -G javauser javauser
+COPY --from=build --chown=javauser:javauser /code/target/*-runner.jar app.jar
+# if this is NOT a uber jar build, add the next line
+# COPY --chown=javauser:javauser target/lib/ lib/
+
+ENV TENANT_ID=value
+ENV MS_GRAPH_CLIENT_ID=value
+ENV MS_GRAPH_CLIENT_SECRET=value
+
+ENV WEBAPP_CLIENT_ID=value
+ENV WEBAPP_CLIENT_SECRET=value
+ENV PORT=8080
+
+EXPOSE ${PORT}
+USER javauser
+ENTRYPOINT ["java", "-jar", "app.jar"]
