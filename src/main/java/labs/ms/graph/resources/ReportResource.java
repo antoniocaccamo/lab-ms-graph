@@ -36,7 +36,7 @@ public class ReportResource {
   @CheckedTemplate
   public static class Templates {
 
-    public static native TemplateInstance index();
+    // public static native TemplateInstance index();
 
     public static native TemplateInstance applications_passwordCredentials(
         OffsetDateTime now, Collection<ReportApplicationPasswordCredentialsRecord> records);
@@ -53,9 +53,9 @@ public class ReportResource {
         now, msGraphClientService.getReportApplicationPasswordCredentialsRecords(accessToken, now));
   }
 
-  @GET
-  @Path("")
-  public TemplateInstance index() {
-    return Templates.index();
-  }
+  // @GET
+  // @Path("")
+  // public TemplateInstance index() {
+  //   return Templates.index();
+  // }
 }

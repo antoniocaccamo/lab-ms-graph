@@ -6,6 +6,8 @@ async function reportAppPasswordCredentials() {
     if (currentAcc) {
         await getTokenPopup(loginRequest, currentAcc)
             .then(response => {
+                $('#result').html('');
+                $('#spinner').show();
                 fetch('/reports/applications/passwordCredentials', {
                     method: 'GET',
                     headers: {  
@@ -14,8 +16,10 @@ async function reportAppPasswordCredentials() {
                 })
                 .then(response => response.text())
                 .then(data => {
+                    $('#spinner').hide();
                     $('#result').html(data);
                     $('#result').show();
+                    
                 })
                 .catch(error => {
                     console.log(error);

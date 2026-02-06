@@ -11,6 +11,7 @@ const profileDiv = document.getElementById("profile-div");
 $(document).ready(function () {
     $('[data-toggle="tooltip"]')
         .tooltip();
+    $('#spinner').hide();
     $('#appPassCredentials').on('click', reportAppPasswordCredentials);
 });
 
